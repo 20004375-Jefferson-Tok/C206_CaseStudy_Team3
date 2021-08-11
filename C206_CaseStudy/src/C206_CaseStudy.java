@@ -7,7 +7,6 @@ public class C206_CaseStudy {
 	private static final int OPTION_QUIT = 5;
 	
 	public static void main(String[] args) {
-		// TODO Auto-generateCategory stub
 
 		ArrayList<Category> categoryList = new ArrayList<Category>();
 		
