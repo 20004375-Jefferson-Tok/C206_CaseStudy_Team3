@@ -9,9 +9,11 @@ import org.junit.Test;
 public class C206_CaseStudyTest {
 	private Category cat1;
 	private Category cat2;
+	private Menu menu1;
+	private Menu menu2;
 	
 	private ArrayList<Category> categoryList;
-	
+	static ArrayList<Menu> MenuItemList = new ArrayList<Menu>();
 	
 	@Before
 	public void setUp() throws Exception {
@@ -20,6 +22,10 @@ public class C206_CaseStudyTest {
 		
 		categoryList = new ArrayList<Category>();
 		
+		
+		
+		menu1 = new Menu(1, "Chicken");
+		menu2 = new Menu(2, "Veggies");
 	}
 
 	@Test
@@ -75,5 +81,50 @@ public class C206_CaseStudyTest {
 	public void tearDown() throws Exception {
 	}
 	
+	@Test
+	public void doAdditems() {
+		//test that item arraylist is not null so that items can be added to it
+		assertNotNull("Check if there is a MenuItemList arraylist to add to", MenuItemList);
+		
+		//test that after adding an item, the size of the array is 1
+		C206_CaseStudy.addItems(MenuItemList, menu1);
+		assertEquals("Check that MenuItemList arraylist size is 1", 1, MenuItemList.size());
+		
+		//test that item added is the same as the first item of the arraylist
+		assertSame("Check that the new Menu item is added", menu1, MenuItemList.get(0));
+	}
 	
+	@Test
+	public void doViewitems() {
+		//Test that arraylist is not null, so items can be retrieved from it
+		assertNotNull("Test if there is a MenuItemList arraylist so that the items there can be retrieved", MenuItemList);
+		
+		//Test that item retrieved from MenuItemList is empty
+		String allitems = C206_CaseStudy.retrieveAllItems(MenuItemList);
+		String Output = "";
+		assertEquals("Check that items retrieved from MenuItemList is empty", Output, allitems);
+		
+		//Test that arraylist list size is 1 after adding 1 item into an empty arraylist
+		C206_CaseStudy.addItems(MenuItemList, menu1);
+		assertEquals("Check that MenuItemList arraylist size is 1", 1, MenuItemList.size());
+		
+	}
+	@Test
+	public void doDeleteitems() {
+		//Check that the arraylist is not null, so items can be removed from the arraylist
+		assertNotNull("Test if the item you want deleted is from a valid arraylist ",MenuItemList);
+		C206_CaseStudy.RemoveItems(MenuItemList, menu1.getId());
+		
+		
+		//Test that items after adding 2 items, arraylist list becomes 2. After removing 1 item, arraylist size becomes 1
+		MenuItemList.add(menu1);
+		MenuItemList.add(menu2);
+		assertEquals("Check that MenuItemList arraylist size is 2", 2, MenuItemList.size());
+		MenuItemList.remove(0);
+		assertEquals("Check that MenuItemList arraylist size is 1", 1, MenuItemList.size());
+		
+		//Test that items can be removed until arraylist becomes empty
+		MenuItemList.remove(0);
+		assertTrue("Check that MenuItemList arraylist size is empty", MenuItemList.isEmpty());
+	}
 }

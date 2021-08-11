@@ -2,7 +2,9 @@ import java.util.ArrayList;
 
 
 
+
 public class C206_CaseStudy {
+	static ArrayList<Menu> MenuItemList = new ArrayList<Menu>();
 
 	private static final int OPTION_QUIT = 5;
 	
@@ -90,6 +92,70 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
+	// --------------------------------------------------------------------------------------------------------------------------------------
+
+		// Add menu items into menu bank
+		public static Menu inputMenuItems() {
+			int itemID = Helper.readInt("Enter item ID > ");
+			String menuItem = Helper.readString("Enter new item > ");
+
+			Menu items = new Menu(itemID, menuItem);
+			return items;
+
+		}
+
+		public static void addItems(ArrayList<Menu> MenuItemList, Menu items) {
+
+			MenuItemList.add(items);
+			System.out.println("item added");
+			// Add menu items into menu bank
+		}
+	// --------------------------------------------------------------------------------------------------------------------------------------
+		// Retrieve all items for viewing
+		public static String retrieveAllItems(ArrayList<Menu> MenuItemList) {
+			String output = "";
+
+			for (int i = 0; i < MenuItemList.size(); i++) {
+				output += String.format("%-10s %-5s\n", MenuItemList.get(i).getId(), MenuItemList.get(i).getItem());
+			}
+			return output;
+		}
+
+		public static void viewAllItems(ArrayList<Menu> MenuItemList) {
+			Helper.line(80, "-");
+			String output = String.format("%-10s %-5s\n", "ID", "DESCRIPTION");
+			output += retrieveAllItems(MenuItemList);
+			System.out.println(output);
+			// Retrieve all items for viewing
+		}
+		
+	// --------------------------------------------------------------------------------------------------------------------------------------
+		// Remove items
+		public static boolean RemoveItems(ArrayList<Menu> MenuItemList, int id) {
+			boolean remove = false;
+			for (int i = 0; i < MenuItemList.size(); i++) {
+				if (MenuItemList.get(i).getId() == id) {
+					MenuItemList.remove(i);
+					remove = true;
+				}
+			}
+			return remove;
+
+		}
+
+		public static String retrieveAllItemsforRemoval(ArrayList<Menu> MenuItemList, int itemID) {
+			String output = "";
+
+			for (int i = 0; i < MenuItemList.size(); i++) {
+				if (itemID == MenuItemList.get(i).getId()) {
+					output += String.format("%-10s %-5s\n", MenuItemList.get(i).getId(), MenuItemList.get(i).getItem());
+				}
+			}
+			return output;
+
+		}
+		// Remove items
+	// --------------------------------------------------------------------------------------------------------------------------------------
 
 
 }
