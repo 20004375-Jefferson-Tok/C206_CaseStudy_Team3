@@ -96,13 +96,15 @@ public class C206_CaseStudyTest {
 	
 	@Test
 	public void doViewitems() {
-		
+		//Test that arraylist is not null, so items can be retrieved from it
 		assertNotNull("Test if there is a MenuItemList arraylist so that the items there can be retrieved", MenuItemList);
 		
+		//Test that item retrieved from MenuItemList is empty
 		String allitems = C206_CaseStudy.retrieveAllItems(MenuItemList);
 		String Output = "";
 		assertEquals("Check that items retrieved from MenuItemList is empty", Output, allitems);
 		
+		//Test that arraylist list size is 1 after adding 1 item into an empty arraylist
 		C206_CaseStudy.addItems(MenuItemList, menu1);
 		assertEquals("Check that MenuItemList arraylist size is 1", 1, MenuItemList.size());
 		
