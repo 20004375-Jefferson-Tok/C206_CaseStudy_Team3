@@ -12,18 +12,29 @@ public class C206_CaseStudyTest {
 	private Menu menu1;
 	private Menu menu2;
 	
+	//private MenuItem menuItem1;
+	//private MenuItem menuItem2;
+	
 	private ArrayList<Category> categoryList;
 	static ArrayList<Menu> MenuItemList = new ArrayList<Menu>();
+	
+	//private ArrayList<MenuItem> menuItemList;
 	
 	@Before
 	public void setUp() throws Exception {
 		cat1 = new Category("cat0010", "Western");
 		cat2 = new Category("cat0020", "Asian");
 		
+		/*menuItem1 = new MenuItem("1", "Spaghetti", "Wanton Mee", "Vegetarian Bee Hoon", 
+				"Chrysanthemum Tea", "Orange Juice",
+				"Watermelon Slice", "Apple Slice");
+		
+		menuItem2 = new MenuItem("2", "Burger", "Dumpling Soup", "Vegetarian Fried Rice", 
+				"Apple Tea", "Watermelon Juice",
+				"Honey Dew Slice", "Grapes");*/
+		
 		categoryList = new ArrayList<Category>();
-		
-		
-		
+		//menuItemList = new ArrayList<MenuItem>();
 		menu1 = new Menu(1, "Chicken");
 		menu2 = new Menu(2, "Veggies");
 	}
@@ -45,6 +56,24 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that Category arraylist size is 2", 2, categoryList.size());
 		assertSame("Check that Category is added", cat2, categoryList.get(1));
 	}
+	
+	@Test
+	//public void addMenuItemTest() {
+		// Item list is not null, so that can add a new item - boundary
+		//assertNotNull("Check if there is valid Menu Item arraylist to add to", menuItemList);
+		
+		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		//The item just added is as same as the first item of the list
+		//C206_CaseStudy.addMenuItem(menuItemList, menuItem1);
+		//assertEquals("Check that Menu Item arraylist size is 1", 1, menuItemList.size());
+		//assertSame("Check that Menu Item is added", menuItem1, menuItemList.get(0));
+		
+		//Add another item. test The size of the list is 2? -normal
+		//The item just added is as same as the second item of the list
+		//C206_CaseStudy.addMenuItem(menuItemList, menuItem2);
+		//assertEquals("Check that Menu Item arraylist size is 2", 2, menuItemList.size());
+		//assertSame("Check that menuItemList is added", menuItem2, menuItemList.get(1));
+	//}
 	
 	@Test
 	public void retrieveAllCategoryTest() {
