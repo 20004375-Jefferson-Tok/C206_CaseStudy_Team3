@@ -58,7 +58,7 @@ public class C206_CaseStudyTest {
 		assertSame("Check that Category is added", cat2, categoryList.get(1));
 	}
 	
-	@Test
+	//@Test
 	//public void addMenuItemTest() {
 		// Item list is not null, so that can add a new item - boundary
 		//assertNotNull("Check if there is valid Menu Item arraylist to add to", menuItemList);
