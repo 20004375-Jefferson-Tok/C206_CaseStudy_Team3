@@ -37,6 +37,7 @@ public class C206_CaseStudyTest {
 		//menuItemList = new ArrayList<MenuItem>();
 		menu1 = new Menu(1, "Chicken");
 		menu2 = new Menu(2, "Veggies");
+		
 	}
 
 	@Test
@@ -138,6 +139,33 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that MenuItemList arraylist size is 1", 1, MenuItemList.size());
 		
 	}
+	
+	
+	@Test
+	public void retrieveAllItemsTest() {
+		// Test if Item list is not null but empty -boundary
+		assertNotNull("Test if there is valid Item arraylist to retrieve item", MenuItemList);
+		
+		//test if the list of category retrieved from the C206_CaseStudy is empty - boundary
+		String allItem = C206_CaseStudy.retrieveAllItems(MenuItemList);
+		String testOutput = "";
+		assertEquals("Check that ViewAllCategorylist", testOutput, allItem);
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+		C206_CaseStudy.addItems(MenuItemList, menu1);
+		C206_CaseStudy.addItems(MenuItemList, menu2);
+		assertEquals("Test that Item arraylist size is 2", 2, MenuItemList.size());
+		
+		//test if the expected output string same as the list of category retrieved from the C206_CaseStudy
+		allItem= C206_CaseStudy.retrieveAllItems(MenuItemList);
+		testOutput = String.format("%-10s %-30s\n","cat0010", "Western");
+		testOutput += String.format("%-10s %-30s\n","cat0020", "Asian");
+	
+		assertEquals("Test that ViewAllCamcorderlist", testOutput, MenuItemList);
+		
+	}
+	
+	
 	@Test
 	public void doDeleteitems() {
 		//Check that the arraylist is not null, so items can be removed from the arraylist
@@ -155,5 +183,28 @@ public class C206_CaseStudyTest {
 		//Test that items can be removed until arraylist becomes empty
 		MenuItemList.remove(0);
 		assertTrue("Check that MenuItemList arraylist size is empty", MenuItemList.isEmpty());
+	}
+	
+	@Test
+	public void retrieveAllItemsforRemovalTest() {
+		// Test if Item list is not null but empty -boundary
+		assertNotNull("Test if there is valid Item arraylist to retrieve item", MenuItemList);
+		
+		//test if the list of category retrieved from the C206_CaseStudy is empty - boundary
+		String allItem = C206_CaseStudy.retrieveAllItems(MenuItemList);
+		String testOutput = "";
+		assertEquals("Check that ViewAllMenuItemlist", testOutput, allItem);
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+		C206_CaseStudy.addItems(MenuItemList, menu1);
+		C206_CaseStudy.addItems(MenuItemList, menu2);
+		assertEquals("Test that Item arraylist size is 2", 2, MenuItemList.size());
+		
+		//test if the expected output string same as the list of category retrieved from the C206_CaseStudy
+		allItem= C206_CaseStudy.retrieveAllItemsforRemoval(MenuItemList, 1);
+		testOutput = String.format("%-10s %-30s\n","cat0010", "Western");
+		testOutput += String.format("%-10s %-30s\n","cat0020", "Asian");
+		assertEquals("Test that ViewAllCamcorderlist", testOutput, MenuItemList);
+		
 	}
 }
